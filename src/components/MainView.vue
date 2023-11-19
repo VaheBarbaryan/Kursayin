@@ -10,6 +10,7 @@ import Swal from 'sweetalert2'
 const emit = defineEmits(['logout'])
 
 const currentPage = ref('home')
+const menuVertical = ref(false)
 
 const openLogoutModal = () => {
   Swal.fire({
@@ -28,6 +29,14 @@ const openLogoutModal = () => {
   });
 }
 
+const openHelpModal = () => {
+  Swal.fire({
+    title: 'Info Modal',
+    text: 'Help topic.',
+    icon: 'question',
+  });
+}
+
 const handleLogout = () => {
   console.log('Logging out...');
   emit('logout')
@@ -36,7 +45,9 @@ const handleLogout = () => {
 
 <template>
   <div class="main">
-    <div class="main__header">
+    <div class="main__header" :class="{[`main__header-vertical`]: menuVertical}">
+      <button @click="menuVertical = !menuVertical"><font-awesome-icon :icon="['fas', 'ellipsis-vertical']" /></button>
+      <button @click="openHelpModal"><font-awesome-icon :icon="['fas', 'circle-info']" /></button>
       <button @click="currentPage = 'home'">Home</button>
       <button @click="currentPage = 'about'">About</button>
       <button @click="currentPage = 'help'">Help</button>
@@ -52,12 +63,17 @@ const handleLogout = () => {
 .main {
     background: #fff;
     padding: 30px;
+    width: calc(100% - 50px);
 
     &__header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
       margin-bottom: 20px;
+
+      &-vertical {
+        flex-direction: column;
+      }
     }
 }
 </style>

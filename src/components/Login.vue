@@ -20,26 +20,36 @@ const onSubmit = () => {
 
 <template>
   <form class="login">
-    <label for="email">Email</label>
-    <input v-model="email" type="email" id="email" placeholder="Enter Email">
-    <label for="password">Password</label>
-    <input v-model="password" type="password" id="password" placeholder="Enter Password">
-    <button @click="onSubmit" type="button" class="submit">Submit</button>
+    <div class="login__wrapper">
+        <label for="email">Email</label>
+        <input v-model="email" type="email" id="email" placeholder="Enter Email">
+        <label for="password">Password</label>
+        <input v-model="password" type="password" id="password" placeholder="Enter Password">
+        <button @click="onSubmit" type="button" class="submit">Submit</button>
+    </div>
   </form>
 </template>
 
 <style lang="scss" scoped>
 .login {
-    box-shadow: 0 10px 15px rgba(0,0,0, .1);
-    padding:30px;
-	width:400px;
-	height:auto;
-	overflow:hidden;
-	background:white;
-	border-radius:10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    &__wrapper {
+        box-shadow: 0 10px 15px rgba(0,0,0, .1);
+        padding:30px;
+        width:400px;
+        height:auto;
+        overflow:hidden;
+        background:white;
+        border-radius:10px;
+    }
+    
     label {
         font-size:14px;
-        color:darkgray;
+        color:gray;
         cursor:pointer;
     }
 

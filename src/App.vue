@@ -48,12 +48,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
     <Animation v-if="state.animation" />
     <Login v-if="state.login" :authUser="authUser" @submit="onSubmit" />
     <NewPassword v-if="state.newPassword" :authUser="authUser" @submit="setNewPassword" />
     <MainView v-if="state.main" :authUser="authUser" @logout="handleLogout" />
-  </div>
 </template>
 
 <style scoped>

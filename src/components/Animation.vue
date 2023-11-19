@@ -41,9 +41,11 @@ onMounted(() => {
 
 <template>
   <div class="animation">
-    <div v-if="firstCube" class="cube1"></div>
-    <div v-if="secondCube" class="cube2"></div>
-    <div v-if="thirdCube" class="cube3"></div>
+    <div class="animation__wrapper">
+        <div v-if="firstCube" class="cube1"></div>
+        <div v-if="secondCube" class="cube2"></div>
+        <div v-if="thirdCube" class="cube3"></div>
+    </div>
   </div>
 </template>
 
@@ -70,13 +72,21 @@ onMounted(() => {
 
 
 .animation {
-    position: relative;
-    background: #fff;
-    width: 500px;
-    height: 350px;
-    border-radius: 5px;
-    box-shadow: 0 10px 15px rgba(0,0,0, .1);
-    padding: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    
+    &__wrapper {
+        position: relative;
+        background: #fff;
+        width: 500px;
+        height: 350px;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0,0,0, .1);
+        padding: 10px;
+    }
     .cube1, .cube2, .cube3 {
         position: absolute;
         width: 50px;
