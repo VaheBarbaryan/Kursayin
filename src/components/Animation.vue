@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+import logoPath from '../assets/logo.png'
+
 const firstCube = ref(true)
 const secondCube = ref(false)
 const thirdCube = ref(false)
@@ -42,9 +44,14 @@ onMounted(() => {
 <template>
   <div class="animation">
     <div class="animation__wrapper">
-        <div v-if="firstCube" class="cube1"></div>
-        <div v-if="secondCube" class="cube2"></div>
-        <div v-if="thirdCube" class="cube3"></div>
+        <div class="animation__info">
+            <p>Advert Window</p>
+            <p>Vahe Barbaryan Karen</p>
+            <p>02.12.2023</p>
+        </div>
+        <img v-if="firstCube" :src="logoPath" class="cube1"/>
+        <img v-if="secondCube"  :src="logoPath" class="cube2"/>
+        <img v-if="thirdCube" :src="logoPath" class="cube3"/>
     </div>
   </div>
 </template>
@@ -87,11 +94,17 @@ onMounted(() => {
         box-shadow: 0 10px 15px rgba(0,0,0, .1);
         padding: 10px;
     }
+
+    &__info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
     .cube1, .cube2, .cube3 {
         position: absolute;
-        width: 50px;
-        height: 50px;
-        background: red;
+        width: 70px;
+        height: 70px;
         animation: Animation 2.5s 0.5s forwards;
     }
 

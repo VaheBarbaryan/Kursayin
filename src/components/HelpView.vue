@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <h1>Help me please</h1>
+  <h1>Help Page</h1>
 </template>
 
 <style>

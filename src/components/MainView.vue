@@ -37,6 +37,18 @@ const openHelpModal = () => {
   });
 }
 
+const openTipModal = () => {
+  Swal.fire({
+    title: 'Tip of the Day',
+    text: `
+      How to set entire document editable
+      
+      document.designMode = 'on';
+    `,
+    icon: 'info',
+  });
+}
+
 const handleLogout = () => {
   console.log('Logging out...');
   emit('logout')
@@ -45,9 +57,11 @@ const handleLogout = () => {
 
 <template>
   <div class="main">
+    <h1 class="main__title">Advert Application</h1>
     <div class="main__header" :class="{[`main__header-vertical`]: menuVertical}">
       <button @click="menuVertical = !menuVertical"><font-awesome-icon :icon="['fas', 'ellipsis-vertical']" /></button>
       <button @click="openHelpModal"><font-awesome-icon :icon="['fas', 'circle-info']" /></button>
+      <button @click="openTipModal">Tip of the Day</button>
       <button @click="currentPage = 'home'">Home</button>
       <button @click="currentPage = 'about'">About</button>
       <button @click="currentPage = 'help'">Help</button>
@@ -64,6 +78,11 @@ const handleLogout = () => {
     background: #fff;
     padding: 30px;
     width: calc(100% - 50px);
+
+    &__title {
+      margin-top: 0;
+      text-align-last: left;
+    }
 
     &__header {
       display: flex;
