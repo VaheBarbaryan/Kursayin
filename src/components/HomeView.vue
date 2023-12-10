@@ -5,6 +5,7 @@ const result = ref(null)
 const n = ref(null)
 
 const isHappyNumber = (num) => {
+  console.log("NUmber", num);
   if(num == 1 || num == 7) {
     return num
   }
@@ -13,11 +14,22 @@ const isHappyNumber = (num) => {
   }
   let sum = 0
   while(num > 0) {
-    let t = num % 10
-    sum += t * t
-    num /= 10
+    let t = parseInt(num % 10)
+    sum = sum + (t * t)
+    num = parseInt(num / 10)
   }
-  return isHappyNumber(num)
+  return isHappyNumber(sum)
+}
+
+const nextHappy = (num) => {
+  if(!num) {
+    return false
+  }
+  while(true) {
+    if(isHappyNumber(++num)) {
+      return result.value = num
+    }
+  }
 }
 
 const handleSubmit = () => {
@@ -36,12 +48,12 @@ const handleSubmit = () => {
       <label for="number" class="form__label"></label>
       <input v-model="n" type="text" id="number" class="form__input">
     </div>
-    <button type="button" @click="handleSubmit">Submit</button>
+    <button type="button" @click="nextHappy(n)">Submit</button>
   </form>
   <h3>Result` {{ result }}</h3>
 </template>
 
-<style>
+<style scoped>
 input {
   width: 100%;
   max-width: 300px;
